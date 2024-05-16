@@ -1,16 +1,18 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import { Space, Skeleton, Divider, Select, Input, Card, Flex } from 'antd'
+import { Space, Skeleton, Card, } from 'antd'
 //pages
 import About from './About';
 import SearchedCountry from './SearchedCountry';
+import SelectedRegion from './SelectedRegion';
 //components
 import SearchInput from '../components/SearchInput'
+import CountryCard from '../components/CountryCard';
+import SelectRegion from '../components/SelectRegion';
 //service
 import { PostService } from '../service/PostService';
 //context
 import { setMyContext } from '../context/MyContext';
-import CountryCard from '../components/CountryCard';
 
 const Home = () => {
     const { countries, setCountries } = setMyContext();
@@ -40,8 +42,9 @@ const Home = () => {
                     <Route path='/' element={
                         countries ?
                             <section className='w-full h-auto xxl:w-[1440px] m-auto px-5 pt-14'>
-                                <Space>
+                                <Space className='w-full flex justify-between' wrap>
                                     <SearchInput />
+                                    <SelectRegion />
                                 </Space>
                                 <div className='w-full flex items-start justify-center gap-5 xxl:justify-between flex-wrap pt-14'>{
                                     countries?.map((item, i) => {
@@ -51,8 +54,9 @@ const Home = () => {
                             </section> :
                             <Skeleton />
                     } />
-                    <Route path='/about' element={<About />} />
+                    <Route path='/about/:title' element={<About />} />
                     <Route path='/country/:title' element={<SearchedCountry />} />
+                    <Route path='/region/:title' element={<SelectedRegion />} />
                 </Routes>
             </main>
             <footer>

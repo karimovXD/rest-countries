@@ -8,5 +8,9 @@ export const PostService = {
     searchCountry: async function (title) {
         const response = await axiosInstance.get(`/name/${title}`);
         return response.data;
+    },
+    selectRegion: async function (title) {
+        const response = await axiosInstance.get(`/region/${title}`);
+        return response.data;
     }
-}
+};
