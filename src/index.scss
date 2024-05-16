@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  a {
+    text-decoration: none;
+  }
+
+  li,
+  ol {
+    list-style: none;
+  }
+
+  body {
+    background: rgb(244, 244, 244);
+  }
+}
