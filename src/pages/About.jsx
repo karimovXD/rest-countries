@@ -29,13 +29,13 @@ const About = () => {
     oneCountry ?
       <section className='pt-14 w-full h-auto xxl:w-[1440px] m-auto px-5'>
         <Back>Back</Back>
-        <div className='pt-14 flex items-center justify-between flex-col md:flex-row'>
+        <div className='pt-14 md:pt-0 flex items-center justify-between flex-col md:flex-row'>
           <div className='w-full md:w-[40%] text-center'>{
             <Image src={oneCountry.flags.png} />
           }</div>
           <div className='w-full md:w-[60%] flex flex-col items-center md:items-start justify-center pt-5'>
             <h1 className='text-xl font-medium'>{oneCountry.name.common}</h1>
-            <div className='py-5 flex items-start gap-12 flex-col'>
+            <div className='py-5 flex items-start gap-12 flex-col md:flex-row'>
               <ul className='flex flex-col gap-1'>
                 <li className='flex items-center justify-start gap-2'>
                   <h5 className='font-bold'>Native Name:</h5>
