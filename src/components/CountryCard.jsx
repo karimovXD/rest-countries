@@ -1,10 +1,10 @@
-import React from 'react'
+import { memo } from 'react'
 import { Divider } from 'antd'
 import { abbreviateNumber } from 'js-abbreviation-number'
 import { Link } from 'react-router-dom'
 
-
 const CountryCard = ({ country }) => {
+    console.log('child chizildi');
 
     return (
         <Link to={`/about/${country.name.common}`}>
@@ -27,4 +27,4 @@ const CountryCard = ({ country }) => {
     )
 }
 
-export default CountryCard
+export default memo(CountryCard)

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Space, Skeleton, Card, } from 'antd'
 //pages
@@ -16,7 +16,7 @@ import { setMyContext } from '../context/MyContext';
 
 const Home = () => {
     const { countries, setCountries } = setMyContext();
-
+    const memoCountries = useMemo(() => countries);
     const handleGetCountries = async () => {
         try {
             const response = await PostService.getAllFlags();
@@ -40,14 +40,14 @@ const Home = () => {
             <main>
                 <Routes>
                     <Route path='/' element={
-                        countries ?
+                        memoCountries ?
                             <section className='w-full h-auto xxl:w-[1440px] m-auto px-5 pt-14'>
                                 <Space className='w-full flex justify-between' wrap>
                                     <SearchInput />
                                     <SelectRegion />
                                 </Space>
                                 <div className='w-full flex items-start justify-center gap-5 xxl:justify-between flex-wrap pt-14'>{
-                                    countries?.map((item, i) => {
+                                    memoCountries.map((item, i) => {
                                         return <CountryCard country={item} key={i} />
                                     })
                                 }</div>

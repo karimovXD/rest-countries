@@ -16,7 +16,7 @@ const SelectedRegion = () => {
     const handleGetSelectedCountry = async () => {
         try {
             const response = await PostService.selectRegion(title);
-            setSelectedCountry(response)
+            setSelectedCountry(response);
         } catch (error) {
             console.log(error);
         }
@@ -24,7 +24,7 @@ const SelectedRegion = () => {
 
     useEffect(() => {
         handleGetSelectedCountry();
-    }, [selectedCountry])
+    }, [])
 
     return (
         <section className='w-full h-auto xxl:w-[1440px] m-auto px-5 pt-14'>
