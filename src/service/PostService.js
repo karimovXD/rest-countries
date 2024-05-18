@@ -1,4 +1,4 @@
-import { axiosInstance } from "./axiosInstance"
+import { axiosInstance } from "./AxiosInstance"
 
 export const PostService = {
     getAllFlags: async function () {
