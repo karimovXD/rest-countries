@@ -7,9 +7,11 @@ import SelectRegion from '../components/SelectRegion'
 import CountryCard from '../components/CountryCard'
 //service
 import { PostService } from '../service/PostService'
+import { setMyContext } from '../context/MyContext'
 
 const SelectedRegion = () => {
     const { title } = useParams();
+    const { isChange, setIsChange } = setMyContext();
 
     const [selectedCountry, setSelectedCountry] = useState(null);
 
@@ -17,6 +19,7 @@ const SelectedRegion = () => {
         try {
             const response = await PostService.selectRegion(title);
             setSelectedCountry(response);
+            setIsChange(!isChange)
         } catch (error) {
             console.log(error);
         }
@@ -24,7 +27,7 @@ const SelectedRegion = () => {
 
     useEffect(() => {
         handleGetSelectedCountry();
-    }, [])
+    }, [isChange]);
 
     return (
         <section className='w-full h-auto xxl:w-[1440px] m-auto px-5 pt-14'>

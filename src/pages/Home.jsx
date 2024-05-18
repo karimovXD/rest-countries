@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import { Space, Skeleton, Card, } from 'antd'
+import { Space, Skeleton, } from 'antd'
 //pages
 import About from './About';
 import SearchedCountry from './SearchedCountry';

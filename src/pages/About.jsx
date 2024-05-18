@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Button, Image, Skeleton } from 'antd';
+import { useParams } from 'react-router-dom';
+import { Image, Skeleton } from 'antd';
 import { abbreviateNumber } from 'js-abbreviation-number';
 //service
 import { PostService } from '../service/PostService';
@@ -11,7 +11,6 @@ import Borders from '../components/Borders';
 const About = () => {
   const { title } = useParams();
   const [oneCountry, setOneCountry] = useState(null);
-  console.log(oneCountry);
 
   const handleGetCountryByName = async () => {
     try {
@@ -21,6 +20,7 @@ const About = () => {
       console.log(error);
     }
   }
+
   useEffect(() => {
     handleGetCountryByName();
   }, [])
@@ -38,7 +38,7 @@ const About = () => {
             <div className='py-5 flex items-start gap-12 flex-col md:flex-row'>
               <ul className='flex flex-col gap-1'>
                 <li className='flex items-center justify-start gap-2'>
-                  <h5 className='font-bold'>Native Name:</h5>
+                  <h5 className='font-bold'>Native-Name:</h5>
                   <span className='text-gray-500 font-normal'>{Object.values(oneCountry.name.nativeName)[0].official}</span>
                 </li>
                 <li className='flex items-center justify-start gap-2'>
@@ -77,7 +77,7 @@ const About = () => {
             </div>
             {
               oneCountry.borders ?
-                <div className='flex items-center gap-3 flex-col'>
+                <div className='flex items-center gap-3 flex-col md:flex-row'>
                   <h1 className='font-bold'>Border Countries:</h1>
                   <div className='flex flex-wrap gap-4'>{oneCountry?.borders.map((item, i) => <Borders key={i}>{item}</Borders>)}</div>
                 </div> :

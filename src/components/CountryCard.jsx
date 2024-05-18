@@ -4,7 +4,6 @@ import { abbreviateNumber } from 'js-abbreviation-number'
 import { Link } from 'react-router-dom'
 
 const CountryCard = ({ country }) => {
-    console.log('child chizildi');
 
     return (
         <Link to={`/about/${country.name.common}`}>
