@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import { Space, Skeleton, } from 'antd'
+import { Space, Skeleton, message } from 'antd'
 //pages
 import About from './About';
 import SearchedCountry from './SearchedCountry';
@@ -22,7 +22,7 @@ const Home = () => {
             const response = await PostService.getAllFlags();
             setCountries(response)
         } catch (error) {
-            console.log(error);
+            message.error('Error')
         }
     }
 
@@ -37,7 +37,7 @@ const Home = () => {
                     <h2 className='text-xl font-medium'>Where in the world?</h2>
                 </nav>
             </header>
-            <main>
+            <main className='pt-5'>
                 <Routes>
                     <Route path='/' element={
                         memoCountries ?
@@ -52,7 +52,7 @@ const Home = () => {
                                     })
                                 }</div>
                             </section> :
-                            <Skeleton />
+                            <Skeleton active />
                     } />
                     <Route path='/about/:title' element={<About />} />
                     <Route path='/country/:title' element={<SearchedCountry />} />

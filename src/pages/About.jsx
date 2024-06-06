@@ -85,8 +85,7 @@ const About = () => {
             }
           </div>
         </div>
-      </section > :
-      <Skeleton />
+      </section > : <Skeleton />
   )
 }
 
